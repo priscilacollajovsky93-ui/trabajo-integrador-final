@@ -1,24 +1,19 @@
-/* ==========================================================================
-   CSS PRINCIPAL - CHIC ROSE (SISTEMA DE DISEÑO ROSA DELICADO & PREMIUM)
-   ========================================================================== */
 
 :root {
-    /* Paleta de Colores de Alta Gama (Pink Soft-Aesthetic) */
-    --primary-pink: #ff7597;      /* Rosa principal elegante */
-    --primary-hover: #ff4d79;     /* Rosa oscuro para hovers */
-    --light-pink: #fff0f3;        /* Fondo rosa sumamente suave */
-    --pastel-blush: #fbb1bd;      /* Rosa intermedio para bordes y detalles */
-    --delicate-rose: #ff85a2;     /* Rosa vibrante pero delicado */
-    --gold-accent: #e5ba73;       /* Dorado satinado para detalles premium */
-    --dark-rose: #3d262a;         /* Color de fuente principal (carbón rosado) */
-    --medium-rose: #70595d;       /* Color secundario de texto */
+   
+    --primary-pink: #ff7597;     
+    --primary-hover: #ff4d79;     
+    --light-pink: #fff0f3;        
+    --pastel-blush: #fbb1bd;     
+    --delicate-rose: #ff85a2;     
+    --gold-accent: #e5ba73;       
+    --dark-rose: #3d262a;         
+    --medium-rose: #70595d;      
+    --success-mint: #83c5be;      
+    --warning-peach: #ffb703;     
+    --danger-coral: #e63946;     
     
-    /* Colores de Estado Estándar Dulces */
-    --success-mint: #83c5be;      /* Menta pastel */
-    --warning-peach: #ffb703;     /* Durazno/Amarillo pastel */
-    --danger-coral: #e63946;      /* Coral pastel */
-    
-    /* Configuración de Glassmorphism & UI */
+ 
     --card-bg: rgba(255, 255, 255, 0.88);
     --glass-border: rgba(255, 255, 255, 0.5);
     --glass-shadow: 0 10px 30px rgba(255, 117, 151, 0.06);
@@ -26,20 +21,13 @@
     --border-radius-sm: 8px;
     --border-radius-md: 16px;
     --border-radius-lg: 24px;
-    
-    /* Tipografía */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
     --font-serif: 'Playfair Display', serif;
-    
-    /* Transiciones estándar */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* ==========================================================================
-   RESET & ESTILOS BASE
-   ========================================================================== */
 
 * {
     margin: 0;
@@ -82,7 +70,7 @@ img {
     display: block;
 }
 
-/* Scrollbar Personalizada */
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -98,9 +86,6 @@ img {
     background: var(--primary-pink);
 }
 
-/* ==========================================================================
-   COMPONENTES DE BOTONES
-   ========================================================================== */
 
 .btn {
     display: inline-flex;
@@ -169,9 +154,7 @@ img {
     display: none !important;
 }
 
-/* ==========================================================================
-   HEADER & NAVBAR
-   ========================================================================== */
+
 
 .header {
     position: sticky;
@@ -194,7 +177,6 @@ img {
     gap: 20px;
 }
 
-/* Logo */
 .logo {
     display: flex;
     align-items: center;
@@ -219,7 +201,7 @@ img {
     -webkit-text-fill-color: transparent;
 }
 
-/* Search Bar */
+
 .search-bar {
     flex: 1;
     max-width: 500px;
@@ -262,7 +244,6 @@ img {
     transform: scale(1.1);
 }
 
-/* Nav Links */
 .nav-links {
     display: flex;
     gap: 25px;
@@ -296,7 +277,7 @@ img {
     width: 100%;
 }
 
-/* User Widget / Cart Widget */
+
 .header-controls {
     display: flex;
     align-items: center;
@@ -374,9 +355,7 @@ img {
     font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   SPA VIEWS - MAIN LAYOUTS
-   ========================================================================== */
+
 
 .main-content {
     max-width: 1300px;
@@ -393,11 +372,6 @@ img {
 .view-section.hidden {
     display: none !important;
 }
-
-/* ==========================================================================
-   TIENDA (SHOP) - PROMO BANNER
-   ========================================================================== */
-
 .promo-banner {
     background: linear-gradient(135deg, #ffe5ec 0%, #fff0f3 100%);
     border: 1px solid var(--pastel-blush);
@@ -526,9 +500,7 @@ img {
     margin-left: 5px;
 }
 
-/* ==========================================================================
-   CATEGORIES QUICK BAR
-   ========================================================================== */
+
 
 .categories-bar {
     display: flex;
@@ -558,9 +530,6 @@ img {
     box-shadow: 0 6px 15px rgba(255, 117, 151, 0.25);
 }
 
-/* ==========================================================================
-   CATALOG GRID & SIDEBAR FILTERS
-   ========================================================================== */
 
 .catalog-container {
     display: grid;
@@ -568,7 +537,6 @@ img {
     gap: 30px;
 }
 
-/* Filters Sidebar */
 .filters-sidebar {
     background: white;
     border: 1px solid var(--pastel-blush);
@@ -610,7 +578,7 @@ img {
     background-color: white;
 }
 
-/* Range Price Custom Slider */
+
 .price-range-inputs {
     display: flex;
     justify-content: space-between;
@@ -645,7 +613,7 @@ img {
     transform: scale(1.2);
 }
 
-/* Customized Checkbox */
+
 .checkbox-container {
     display: block;
     position: relative;
@@ -733,9 +701,7 @@ img {
     color: var(--medium-rose);
 }
 
-/* ==========================================================================
-   PRODUCTS GRID & CARD LAYOUT
-   ========================================================================== */
+
 
 .products-area {
     display: flex;
@@ -763,7 +729,7 @@ img {
     gap: 25px;
 }
 
-/* Card Styling */
+
 .product-card {
     background: white;
     border: 1px solid var(--pastel-blush);
@@ -930,9 +896,7 @@ img {
     cursor: not-allowed;
 }
 
-/* ==========================================================================
-   CART DRAWERS AND SIDEBARS
-   ========================================================================== */
+
 
 .cart-backdrop {
     position: fixed;
@@ -998,7 +962,6 @@ img {
     transform: rotate(90deg);
 }
 
-/* Items list inside cart */
 .cart-items {
     flex: 1;
     overflow-y: auto;
@@ -1110,7 +1073,7 @@ img {
     transform: scale(1.15);
 }
 
-/* Cart Footer */
+
 .cart-sidebar-footer {
     padding: 24px;
     border-top: 1px solid var(--pastel-blush);
@@ -1139,9 +1102,6 @@ img {
     margin-bottom: 16px;
 }
 
-/* ==========================================================================
-   MODALES (ESTILO BLUR / GLASSMORPHISM)
-   ========================================================================== */
 
 .modal-overlay {
     position: fixed;
@@ -1413,7 +1373,6 @@ img {
     animation: heart-pulse 0.4s ease-in-out;
 }
 
-/* 2. Modal: Auth (Login/Register) */
 .auth-modal-container {
     max-width: 420px;
     padding: 30px;
@@ -1521,7 +1480,7 @@ img {
     color: var(--primary-pink);
 }
 
-/* 3. Modal: Checkout & Payment */
+
 .checkout-modal-container {
     max-width: 950px;
 }
@@ -1627,7 +1586,7 @@ img {
     font-size: 1.2rem;
 }
 
-/* Estilos para Medios de Pago en Checkout */
+
 .payment-methods-selector {
     display: flex;
     gap: 12px;
@@ -1680,7 +1639,7 @@ img {
     gap: 15px;
 }
 
-/* Mercado Pago Mockup */
+
 .mp-mock-container {
     background: linear-gradient(135deg, #009ee3 0%, #0077b6 100%);
     border-radius: var(--border-radius-md);
@@ -1751,7 +1710,7 @@ img {
     color: #777;
 }
 
-/* Efectivo Mockup */
+
 .cash-mock-container {
     background: #eefdf6;
     border: 1px dashed #74d8a7;
@@ -1799,10 +1758,6 @@ img {
     font-size: 0.95rem;
     color: #2d8a57;
 }
-
-/* ==========================================================================
-   ADMIN DASHBOARD ESTILOS
-   ========================================================================== */
 
 .admin-header {
     display: flex;
@@ -1852,7 +1807,7 @@ img {
     display: none !important;
 }
 
-/* KPIs cards grid */
+
 .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1918,7 +1873,7 @@ img {
     color: var(--dark-rose);
 }
 
-/* Dashboard Row: Graph & Lists */
+
 .dashboard-row {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -1955,7 +1910,6 @@ img {
     font-weight: 700;
 }
 
-/* SVG Chart */
 .chart-container {
     height: 260px;
     display: flex;
@@ -2156,9 +2110,8 @@ img {
     background: #fae1e3;
 }
 
-/* ==========================================================================
-   ADMIN EDITOR FORM & MODAL
-   ========================================================================== */
+
+
 
 .editor-modal-container {
     max-width: 600px;
@@ -2213,9 +2166,7 @@ img {
     margin-top: 15px;
 }
 
-/* ==========================================================================
-   MI CUENTA (CLIENT PROFILE) ESTILOS
-   ========================================================================== */
+
 
 .profile-container {
     display: grid;
@@ -2287,7 +2238,7 @@ img {
     margin-bottom: 30px;
 }
 
-/* Purchase History list styling */
+
 .orders-history-list {
     display: flex;
     flex-direction: column;
@@ -2364,9 +2315,6 @@ img {
     color: var(--primary-pink);
 }
 
-/* ==========================================================================
-   TOAST NOTIFICATION COMPONENT
-   ========================================================================== */
 
 .toast-container {
     position: fixed;
@@ -2417,9 +2365,6 @@ img {
     font-weight: 600;
 }
 
-/* ==========================================================================
-   FOOTER STYLE
-   ========================================================================== */
 
 .footer {
     background: #ffe5ec;
@@ -2521,9 +2466,6 @@ img {
     color: var(--medium-rose);
 }
 
-/* ==========================================================================
-   ANIMATIONS KEYFRAMES
-   ========================================================================== */
 
 @keyframes draw-chart-line {
     from {
@@ -2615,9 +2557,7 @@ img {
     }
 }
 
-/* ==========================================================================
-   DISEÑO RESPONSIVO (MEDIA QUERIES)
-   ========================================================================== */
+
 
 @media (max-width: 1024px) {
     .catalog-container {
@@ -2625,7 +2565,7 @@ img {
     }
     
     .filters-sidebar {
-        display: none; /* Can be toggled on demand in a real product, keeping clean here */
+        display: none; 
     }
     
     .promo-banner {
