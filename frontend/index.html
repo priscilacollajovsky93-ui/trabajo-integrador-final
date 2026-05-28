@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chic Rose | Tienda de Ropa Femenina</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NOTIFICACIÓN TOAST -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="#" class="logo" id="nav-logo-btn">
+                <span class="logo-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                <span class="logo-text">Chic Rose</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Buscar vestidos, blusas, sacos...">
+                <button type="button" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" data-view="shop-view">Tienda</a>
+                <a href="#" class="nav-item hidden" id="nav-admin-link" data-view="admin-view"><i class="fa-solid fa-chart-line"></i> Admin</a>
+                <a href="#" class="nav-item hidden" id="nav-profile-link" data-view="profile-view"><i class="fa-regular fa-user"></i> Mi Cuenta</a>
+            </nav>
+
+            <!-- User and Cart controls -->
+            <div class="header-controls">
+                <div class="user-session-widget" id="user-widget">
+                    <button class="btn btn-outline-pink btn-sm" id="header-login-btn">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión
+                    </button>
+                </div>
+                
+                <button class="cart-btn" id="open-cart-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SPA VIEW CONTAINERS -->
+    <main class="main-content">
+
+        <!-- TIENDA (SHOP) VIEW -->
+        <section id="shop-view" class="view-section">
+            <!-- Promo Banner Carousel (Beautiful & Decorative) -->
+            <div class="promo-banner">
+                <div class="promo-content">
+                    <span class="promo-tag">Nueva Colección Primavera - Verano</span>
+                    <h1 class="promo-title">Elegancia & Delicadeza en Tonos Rosas</h1>
+                    <p class="promo-text">Descubre prendas exclusivas diseñadas para realzar tu belleza natural con la máxima suavidad y estilo.</p>
+                    <button class="btn btn-pink" id="explore-btn">Explorar Colección</button>
+                </div>
+                <div class="promo-visual">
+                    <div class="visual-circle circle-1"></div>
+                    <div class="visual-circle circle-2"></div>
+                    <!-- A beautiful floating card mockup -->
+                    <div class="floating-promo-card">
+                        <span class="card-sale-badge">30% OFF</span>
+                        <div class="promo-card-details">
+                            <span class="promo-card-cat">Vestidos</span>
+                            <h4>Gala Romantic Rose</h4>
+                            <span class="promo-card-price">$15,500 <span class="old-price">$22,100</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Quick Filter Bar -->
+            <div class="categories-bar">
+                <button class="cat-pill active" data-category="all">Todos</button>
+                <button class="cat-pill" data-category="Vestidos">Vestidos</button>
+                <button class="cat-pill" data-category="Blusas">Blusas</button>
+                <button class="cat-pill" data-category="Abrigos">Abrigos</button>
+                <button class="cat-pill" data-category="Polleras">Polleras</button>
+                <button class="cat-pill" data-category="Accesorios">Accesorios</button>
+            </div>
+
+            <!-- Shop Catalog Area (Grid & Filters) -->
+            <div class="catalog-container">
+                <!-- Sidebar Filters (Collapsible on Mobile) -->
+                <aside class="filters-sidebar">
+                    <div class="filter-group">
+                        <h3>Ordenar Por</h3>
+                        <select id="sort-select" class="form-control">
+                            <option value="default">Relevancia</option>
+                            <option value="price-low">Precio: menor a mayor</option>
+                            <option value="price-high">Precio: mayor a menor</option>
+                            <option value="name-asc">Nombre: A - Z</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Rango de Precios</h3>
+                        <div class="price-range-inputs">
+                            <span id="price-min-val">$0</span>
+                            <span id="price-max-val">$30,000</span>
+                        </div>
+                        <input type="range" id="price-range" min="0" max="30000" step="500" value="30000" class="range-slider">
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Disponibilidad</h3>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="filter-stock" checked>
+                            <span class="checkmark"></span> En Stock
+                        </label>
+                    </div>
+
+                    <div class="filter-promo-box">
+                        <i class="fa-solid fa-gift pink-icon"></i>
+                        <h4>Envío Gratis</h4>
+                        <p>En compras superiores a $15,000 en todo el país.</p>
+                    </div>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="products-area">
+                    <div class="results-header">
+                        <span class="results-count" id="results-count">Mostrando 8 productos</span>
+                    </div>
+                    <div class="products-grid" id="products-grid">
+                        <!-- Product Cards rendered dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMINISTRADOR (ADMIN) VIEW -->
+        <section id="admin-view" class="view-section hidden">
+            <div class="admin-header">
+                <div>
+                    <h2>Panel de Control Administrativo</h2>
+                    <p class="admin-subtitle">Monitorea tus ventas, pedidos y gestiona el inventario de la tienda.</p>
+                </div>
+                <div class="admin-actions">
+                    <button class="btn btn-pink" id="admin-add-product-btn">
+                        <i class="fa-solid fa-plus"></i> Agregar Nuevo Producto
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin Sub-tabs -->
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-tab="stats-tab"><i class="fa-solid fa-chart-simple"></i> Estadísticas de Ventas</button>
+                <button class="admin-tab-btn" data-tab="inventory-tab"><i class="fa-solid fa-boxes-stacked"></i> Inventario de Productos</button>
+                <button class="admin-tab-btn" data-tab="orders-tab"><i class="fa-solid fa-receipt"></i> Pedidos Recibidos</button>
+            </div>
+
+            <!-- Tab 1: Stats & Charts -->
+            <div id="stats-tab" class="admin-tab-content active">
+                <!-- KPI Grid -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon icon-rose"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Ingresos Totales</span>
+                            <h3 class="kpi-value" id="kpi-revenue">$0</h3>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon icon-blue"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Ventas Totales</span>
+                            <h3 class="kpi-value" id="kpi-sales-count">0</h3>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon icon-purple"><i class="fa-solid fa-users"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Clientes Registrados</span>
+                            <h3 class="kpi-value" id="kpi-users-count">0</h3>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon icon-orange"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Stock Crítico</span>
+                            <h3 class="kpi-value text-danger" id="kpi-low-stock">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphic & Analysis Row -->
+                <div class="dashboard-row">
+                    <div class="dashboard-card main-chart-card">
+                        <div class="card-header">
+                            <h3>Rendimiento de Ventas Diarias</h3>
+                            <span class="card-timeframe">Últimos 5 días</span>
+                        </div>
+                        <div class="chart-container" id="sales-chart-container">
+                            <!-- High quality CSS/SVG Chart rendered by JS -->
+                        </div>
+                    </div>
+                    <div class="dashboard-card popular-products-card">
+                        <div class="card-header">
+                            <h3>Productos Más Vendidos</h3>
+                        </div>
+                        <ul class="popular-list" id="popular-products-list">
+                            <!-- Rendered dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Inventory CRUD -->
+            <div id="inventory-tab" class="admin-tab-content hidden">
+                <div class="table-controls">
+                    <div class="search-bar inventory-search">
+                        <input type="text" id="inventory-search-input" placeholder="Buscar por código, nombre o categoría...">
+                        <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <select id="inventory-filter-category" class="form-control">
+                        <option value="all">Todas las Categorías</option>
+                        <option value="Vestidos">Vestidos</option>
+                        <option value="Blusas">Blusas</option>
+                        <option value="Abrigos">Abrigos</option>
+                        <option value="Polleras">Polleras</option>
+                        <option value="Accesorios">Accesorios</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-table-body">
+                            <!-- Dynamic rows via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 3: Orders Recieved -->
+            <div id="orders-tab" class="admin-tab-content hidden">
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nro. Pedido</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Productos</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            <!-- Dynamic rows via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- MI CUENTA / CLIENT PROFILE VIEW -->
+        <section id="profile-view" class="view-section hidden">
+            <div class="profile-container">
+                <!-- Left panel: User info -->
+                <div class="profile-sidebar-card">
+                    <div class="user-avatar-large">
+                        <i class="fa-solid fa-user-tie" id="user-avatar-icon"></i>
+                    </div>
+                    <h3 id="profile-name">Sofia Rodriguez</h3>
+                    <p class="profile-email" id="profile-email">cliente@chic.com</p>
+                    <span class="user-badge" id="profile-role-badge">Cliente Premium</span>
+                    
+                    <hr class="profile-divider">
+                    
+                    <button class="btn btn-outline-pink btn-block" id="logout-btn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+                    </button>
+                </div>
+
+                <!-- Right panel: Purchase History -->
+                <div class="profile-main-content">
+                    <h2 class="section-title">Historial de Mis Compras</h2>
+                    <p class="section-subtitle">Realiza el seguimiento de tus pedidos y consulta tus compras anteriores.</p>
+                    
+                    <div class="orders-history-list" id="client-orders-history">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RIGHT SLIDE-OUT CART SIDEBAR -->
+    <div class="cart-backdrop" id="cart-backdrop"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar-header">
+            <h3>Bolsa de Compras</h3>
+            <button class="close-cart-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <!-- Cart Items Container -->
+        <div class="cart-items" id="cart-items-container">
+            <!-- Items rendered dynamically -->
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="cart-sidebar-footer">
+            <div class="cart-totals">
+                <span>Subtotal:</span>
+                <span class="total-price" id="cart-subtotal">$0</span>
+            </div>
+            <p class="cart-shipping-notice"><i class="fa-solid fa-truck-fast"></i> ¡Envío gratis a partir de $15,000!</p>
+            <button class="btn btn-pink btn-block btn-lg" id="checkout-btn-cart">
+                <i class="fa-solid fa-credit-card"></i> Proceder al Pago
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL: PRODUCT DETAIL -->
+    <div class="modal-overlay" id="product-detail-modal">
+        <div class="modal-container product-modal-container">
+            <button class="modal-close-btn" id="close-detail-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="product-modal-grid">
+                <!-- Product Image Gallery -->
+                <div class="product-modal-gallery">
+                    <img src="" id="modal-product-img" alt="Product Name">
+                </div>
+                <!-- Product Purchase controls -->
+                <div class="product-modal-info">
+                    <span class="modal-product-cat" id="modal-product-cat">Categoría</span>
+                    <h2 class="modal-product-title" id="modal-product-title">Nombre del Producto</h2>
+                    <div class="modal-product-price-row">
+                        <span class="modal-product-price" id="modal-product-price">$0</span>
+                        <span class="modal-product-stock-badge" id="modal-product-stock-badge">En Stock</span>
+                    </div>
+                    <p class="modal-product-desc" id="modal-product-desc">Descripción detallada del producto.</p>
+                    
+                    <!-- Size Selector -->
+                    <div class="selector-group">
+                        <label>Selecciona tu Talla:</label>
+                        <div class="size-options">
+                            <button class="size-pill" data-size="S">S</button>
+                            <button class="size-pill active" data-size="M">M</button>
+                            <button class="size-pill" data-size="L">L</button>
+                            <button class="size-pill" data-size="XL">XL</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Selector -->
+                    <div class="selector-group">
+                        <label>Color Disponible:</label>
+                        <div class="color-options">
+                            <span class="color-dot active" style="background-color: #ff85a2;" data-color="Rosa Delicado" title="Rosa Delicado"></span>
+                            <span class="color-dot" style="background-color: #f7cad0;" data-color="Rosa Rubor" title="Rosa Rubor"></span>
+                            <span class="color-dot" style="background-color: #ffffff; border: 1px solid #ddd;" data-color="Blanco Puro" title="Blanco Puro"></span>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="selector-group quantity-row">
+                        <label>Cantidad:</label>
+                        <div class="quantity-controller">
+                            <button type="button" id="modal-qty-minus"><i class="fa-solid fa-minus"></i></button>
+                            <input type="number" id="modal-qty-input" value="1" min="1">
+                            <button type="button" id="modal-qty-plus"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Add to bag button -->
+                    <div class="actions-row">
+                        <button class="btn btn-pink btn-lg btn-block" id="modal-add-to-cart-btn">
+                            <i class="fa-solid fa-bag-shopping"></i> Añadir a la Bolsa
+                        </button>
+                        <button class="btn-favorite" id="modal-fav-btn"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: LOGIN / REGISTER (GLASSMORPHISM) -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal-container auth-modal-container glass-card">
+            <button class="modal-close-btn" id="close-auth-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="tab-login-btn">Iniciar Sesión</button>
+                <button class="auth-tab-btn" id="tab-register-btn">Registrarse</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="auth-header-desc">
+                    <h3>¡Qué bueno verte de nuevo!</h3>
+                    <p>Inicia sesión para proceder con tu compra y ver tu historial.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-email">Correo Electrónico</label>
+                    <div class="input-with-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="login-email" class="form-control" placeholder="ejemplo@correo.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="login-password" class="form-control" placeholder="Mínimo 6 caracteres" required>
+                    </div>
+                </div>
+
+                <div class="auth-alert text-danger hidden" id="login-error">Credenciales incorrectas. Intenta de nuevo.</div>
+
+                <button type="submit" class="btn btn-pink btn-block btn-lg">Entrar con Elegancia</button>
+                
+                <div class="demo-hints">
+                    <p><strong>Cuentas de demostración de fábrica:</strong></p>
+                    <p>• Cliente: <code>cliente@chic.com</code> / <code>cliente123</code></p>
+                    <p>• Admin: <code>admin@chic.com</code> / <code>admin123</code></p>
+                </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form">
+                <div class="auth-header-desc">
+                    <h3>Únete a Chic Rose</h3>
+                    <p>Regístrate gratis para acumular puntos, recibir ofertas y realizar compras rápidas.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-name">Nombre Completo</label>
+                    <div class="input-with-icon">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="register-name" class="form-control" placeholder="Tu nombre completo" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">Correo Electrónico</label>
+                    <div class="input-with-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="register-email" class="form-control" placeholder="ejemplo@correo.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Contraseña</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="register-password" class="form-control" placeholder="Mínimo 6 caracteres" required>
+                    </div>
+                </div>
+
+                <div class="auth-alert text-danger hidden" id="register-error">Este correo electrónico ya está registrado.</div>
+
+                <button type="submit" class="btn btn-pink btn-block btn-lg">Registrarse y Crear Cuenta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADMIN PRODUCT ADD / EDIT EDITOR -->
+    <div class="modal-overlay" id="product-editor-modal">
+        <div class="modal-container editor-modal-container">
+            <button class="modal-close-btn" id="close-editor-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            <h2 id="editor-title" class="editor-header-title">Agregar Nuevo Producto</h2>
+            <p class="editor-subtitle">Completa los campos con cuidado. La estética de la tienda depende de las buenas imágenes.</p>
+            
+            <form id="product-editor-form" class="editor-form">
+                <input type="hidden" id="editor-product-id">
+                
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="editor-code">Código de Producto (SKU)</label>
+                        <input type="text" id="editor-code" class="form-control" placeholder="Ej: VEST-09" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editor-category">Categoría</label>
+                        <select id="editor-category" class="form-control" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="Vestidos">Vestidos</option>
+                            <option value="Blusas">Blusas</option>
+                            <option value="Abrigos">Abrigos</option>
+                            <option value="Polleras">Polleras</option>
+                            <option value="Accesorios">Accesorios</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editor-title-field">Nombre Comercial del Producto</label>
+                    <input type="text" id="editor-title-field" class="form-control" placeholder="Ej: Vestido Romantic Pink Satin" required>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="editor-price">Precio ($ ARS)</label>
+                        <input type="number" id="editor-price" class="form-control" min="100" placeholder="Ej: 9800" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editor-stock">Stock de Inventario</label>
+                        <input type="number" id="editor-stock" class="form-control" min="0" placeholder="Ej: 15" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editor-image">URL de la Imagen (Resolución sugerida: 600x800 px)</label>
+                    <input type="url" id="editor-image" class="form-control" placeholder="https://images.unsplash.com/... o enlace de internet" required>
+                    <div class="image-preview-box" id="editor-image-preview">
+                        <span>Sin previsualización de imagen</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editor-desc">Descripción del Producto</label>
+                    <textarea id="editor-desc" class="form-control" rows="3" placeholder="Detalles de tela, corte, calce y recomendaciones..." required></textarea>
+                </div>
+
+                <div class="editor-buttons">
+                    <button type="button" class="btn btn-outline-pink" id="cancel-editor-btn">Cancelar</button>
+                    <button type="submit" class="btn btn-pink" id="save-product-btn">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: CHECKOUT AND PAYMENT -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-container checkout-modal-container glass-card">
+            <button class="modal-close-btn" id="close-checkout-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            <h2>Finalizar Compra Femenina</h2>
+            <p class="checkout-subtitle">Por favor ingresa tus datos de envío y pago para completar la orden en Chic Rose.</p>
+            
+            <div class="checkout-grid">
+                <!-- Checkout Form -->
+                <form id="checkout-form" class="checkout-form">
+                    <div class="checkout-section-title"><i class="fa-solid fa-truck"></i> 1. Información de Envío</div>
+                    
+                    <div class="form-group">
+                        <label for="shipping-address">Dirección de Entrega</label>
+                        <input type="text" id="shipping-address" class="form-control" placeholder="Av. Santa Fe 1234, CABA" required>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="shipping-city">Ciudad / Provincia</label>
+                            <input type="text" id="shipping-city" class="form-control" placeholder="Buenos Aires" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-postal">Código Postal</label>
+                            <input type="text" id="shipping-postal" class="form-control" placeholder="C1425" required>
+                        </div>
+                    </div>
+
+                    <div class="checkout-section-title"><i class="fa-solid fa-wallet"></i> 2. Selecciona tu Medio de Pago</div>
+                    
+                    <div class="payment-methods-selector">
+                        <button type="button" class="pay-method-btn active" data-method="card" onclick="selectPaymentMethod('card')">
+                            <i class="fa-regular fa-credit-card"></i>
+                            <span>Tarjeta</span>
+                        </button>
+                        <button type="button" class="pay-method-btn" data-method="mercadopago" onclick="selectPaymentMethod('mercadopago')">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                            <span>Mercado Pago</span>
+                        </button>
+                        <button type="button" class="pay-method-btn" data-method="cash" onclick="selectPaymentMethod('cash')">
+                            <i class="fa-solid fa-money-bill-1-wave"></i>
+                            <span>Efectivo</span>
+                        </button>
+                    </div>
+
+                    <!-- SUB-FORM 1: TARJETA -->
+                    <div id="payment-form-card" class="payment-method-fields active">
+                        <div class="form-group">
+                            <label for="payment-cardname">Nombre del Titular de la Tarjeta</label>
+                            <input type="text" id="payment-cardname" class="form-control" placeholder="Sofia Rodriguez" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="payment-cardnumber">Número de Tarjeta</label>
+                            <div class="input-with-icon">
+                                <i class="fa-regular fa-credit-card"></i>
+                                <input type="text" id="payment-cardnumber" class="form-control" placeholder="4517 8400 1234 5678" pattern="\d{16}" title="Debe contener 16 dígitos" maxlength="16" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="payment-expiry">Fecha Vencimiento (MM/AA)</label>
+                                <input type="text" id="payment-expiry" class="form-control" placeholder="12/28" pattern="\d{2}/\d{2}" title="Formato MM/AA" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="payment-cvv">Código de Seguridad (CVV)</label>
+                                <input type="password" id="payment-cvv" class="form-control" placeholder="123" pattern="\d{3}" title="3 dígitos" maxlength="3" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB-FORM 2: MERCADO PAGO -->
+                    <div id="payment-form-mercadopago" class="payment-method-fields">
+                        <div class="mp-mock-container">
+                            <div class="mp-mock-header">
+                                <span class="mp-logo"><i class="fa-solid fa-handshake-angle"></i> mercado pago</span>
+                            </div>
+                            <div class="mp-mock-body">
+                                <p>Simula tu pago ingresando tu usuario o escaneando el código QR de Mercado Pago.</p>
+                                <div class="mp-qr-box">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span>QR Ficticio Chic Rose</span>
+                                </div>
+                                <div class="form-group" style="margin-top: 15px; width: 100%; text-align: left;">
+                                    <label for="mp-email" style="color: white;">Usuario / Correo de Mercado Pago</label>
+                                    <input type="email" id="mp-email" class="form-control" placeholder="cliente@chic.com">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB-FORM 3: EFECTIVO -->
+                    <div id="payment-form-cash" class="payment-method-fields">
+                        <div class="cash-mock-container">
+                            <div class="cash-icon-banner">
+                                <i class="fa-solid fa-truck-ramp-box"></i>
+                            </div>
+                            <p><strong>Pago Contra Entrega o Rapipago/Pago Fácil</strong></p>
+                            <p class="cash-desc">Puedes abonar en efectivo al recibir tu pedido en tu casa, o bien en Rapipago/Pago Fácil usando este talón virtual:</p>
+                            <div class="cash-barcode-box">
+                                <i class="fa-solid fa-barcode"></i>
+                                <span>2849-1084-2026-CHIC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-pink btn-block btn-lg" id="checkout-submit-btn" style="margin-top: 20px;">
+                        <i class="fa-solid fa-lock"></i> <span id="checkout-submit-text">Confirmar y Pagar Tarjeta</span>
+                    </button>
+                </form>
+
+                <!-- Order Summary Sidebar inside checkout -->
+                <div class="checkout-summary-panel">
+                    <h3>Resumen del Pedido</h3>
+                    <hr>
+                    <div class="checkout-summary-items" id="checkout-summary-items">
+                        <!-- Loaded dynamically -->
+                    </div>
+                    <hr>
+                    <div class="checkout-summary-row">
+                        <span>Subtotal de Compra:</span>
+                        <span id="checkout-subtotal-val">$0</span>
+                    </div>
+                    <div class="checkout-summary-row">
+                        <span>Costo de Envío:</span>
+                        <span id="checkout-shipping-val" class="text-success">¡GRATIS!</span>
+                    </div>
+                    <hr>
+                    <div class="checkout-summary-row total-row">
+                        <span>Total Final:</span>
+                        <span id="checkout-total-val">$0</span>
+                    </div>
+
+                    <div class="checkout-trust-badge">
+                        <i class="fa-solid fa-shield-halved text-success"></i>
+                        <span>Transacción segura y encriptada bajo estándares SSL.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <span class="logo-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                    <span class="logo-text">Chic Rose</span>
+                </div>
+                <p>Tu destino número uno para moda femenina exclusiva. Diseños románticos, elegantes y con el toque moderno que mereces.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#" class="footer-link-cat" data-category="Vestidos">Vestidos</a></li>
+                    <li><a href="#" class="footer-link-cat" data-category="Blusas">Blusas</a></li>
+                    <li><a href="#" class="footer-link-cat" data-category="Abrigos">Abrigos</a></li>
+                    <li><a href="#" class="footer-link-cat" data-category="Polleras">Polleras</a></li>
+                    <li><a href="#" class="footer-link-cat" data-category="Accesorios">Accesorios</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Ayuda & Soporte</h3>
+                <ul>
+                    <li><a href="#">Guía de Tallas</a></li>
+                    <li><a href="#">Políticas de Envío</a></li>
+                    <li><a href="#">Cambios y Devoluciones</a></li>
+                    <li><a href="#">Términos de Servicio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Palermo Hollywood, CABA</p>
+                <p><i class="fa-solid fa-phone"></i> +54 (11) 5382-9900</p>
+                <p><i class="fa-solid fa-envelope"></i> consultas@chicrose.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chic Rose S.A. Todos los derechos reservados. Diseñado en Tonos Rosas con Elegancia.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL: SIMULACION DE PAGO FICTICIO -->
+    <div class="modal-overlay" id="payment-simulation-modal" style="z-index: 10000;">
+        <div class="modal-container auth-modal-container glass-card" style="max-width: 480px; text-align: center; padding: 40px 30px;">
+            <div id="payment-sim-processing">
+                <div class="payment-sim-spinner" style="font-size: 4rem; color: var(--primary-pink); margin: 0 auto; width: fit-content;">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                </div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.3rem; margin-top: 20px;" id="payment-sim-title">Procesando Pago Seguro...</h3>
+                <p style="color: var(--medium-rose); font-size: 0.9rem; margin-top: 10px;" id="payment-sim-text">Conectando con la entidad financiera de Chic Rose de forma segura.</p>
+                
+                <div class="progress-bar-container" style="width: 100%; height: 6px; background: #ffe5ec; border-radius: 10px; margin-top: 25px; overflow: hidden;">
+                    <div id="payment-sim-progress" style="width: 0%; height: 100%; background: var(--primary-pink); border-radius: 10px; transition: width 0.1s linear;"></div>
+                </div>
+            </div>
+            
+            <div id="payment-sim-success" class="hidden">
+                <div class="payment-sim-success-icon" style="font-size: 4.5rem; color: var(--success-mint); margin: 0 auto; width: fit-content; animation: heart-pulse 1s infinite alternate;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--success-mint); margin-top: 20px;">¡Pago Aprobado con Éxito!</h3>
+                <p style="color: var(--medium-rose); font-size: 0.9rem; margin-top: 10px;" id="payment-success-text">Tu compra en Chic Rose ha sido procesada de manera correcta.</p>
+                
+                <div class="sim-receipt-box" style="background: var(--light-pink); border: 1px dashed var(--pastel-blush); border-radius: var(--border-radius-sm); padding: 15px; margin-top: 20px; text-align: left; font-size: 0.85rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px; color: var(--dark-rose);">
+                        <span>ID Transacción:</span>
+                        <strong id="sim-receipt-tx">TX-89104</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px; color: var(--dark-rose);">
+                        <span>Medio de Pago:</span>
+                        <strong id="sim-receipt-method">Tarjeta</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; color: var(--dark-rose);">
+                        <span>Total Debitado:</span>
+                        <strong id="sim-receipt-total">$0</strong>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn btn-pink btn-block btn-lg" id="payment-sim-finish-btn" style="margin-top: 25px; width: 100%;">
+                    Ver Mi Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Javascript Code -->
+    <script src="app.js"></script>
+<a href="http://localhost:5555" target="_blank" class="btn btn-outline-pink btn-sm" style="position:fixed;bottom:20px;right:20px;z-index:1000;">Ver DB (Prisma Studio)</a>
+</body>
+</html>
