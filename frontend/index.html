@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chic Rose | Tienda de Ropa Femenina</title>
-    <!-- Google Fonts -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -15,10 +15,10 @@
 </head>
 <body>
 
-    <!-- NOTIFICACIÓN TOAST -->
+
     <div id="toast-container" class="toast-container"></div>
 
-    <!-- HEADER / NAVIGATION BAR -->
+    
     <header class="header">
         <div class="header-container">
             <!-- Logo -->
@@ -27,20 +27,20 @@
                 <span class="logo-text">Chic Rose</span>
             </a>
 
-            <!-- Search Bar -->
+            
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Buscar vestidos, blusas, sacos...">
                 <button type="button" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
-            <!-- Navigation Links -->
+            
             <nav class="nav-links">
                 <a href="#" class="nav-item active" data-view="shop-view">Tienda</a>
                 <a href="#" class="nav-item hidden" id="nav-admin-link" data-view="admin-view"><i class="fa-solid fa-chart-line"></i> Admin</a>
                 <a href="#" class="nav-item hidden" id="nav-profile-link" data-view="profile-view"><i class="fa-regular fa-user"></i> Mi Cuenta</a>
             </nav>
 
-            <!-- User and Cart controls -->
+            
             <div class="header-controls">
                 <div class="user-session-widget" id="user-widget">
                     <button class="btn btn-outline-pink btn-sm" id="header-login-btn">
@@ -55,13 +55,11 @@
             </div>
         </div>
     </header>
-
-    <!-- SPA VIEW CONTAINERS -->
     <main class="main-content">
 
-        <!-- TIENDA (SHOP) VIEW -->
+        
         <section id="shop-view" class="view-section">
-            <!-- Promo Banner Carousel (Beautiful & Decorative) -->
+            
             <div class="promo-banner">
                 <div class="promo-content">
                     <span class="promo-tag">Nueva Colección Primavera - Verano</span>
@@ -72,7 +70,7 @@
                 <div class="promo-visual">
                     <div class="visual-circle circle-1"></div>
                     <div class="visual-circle circle-2"></div>
-                    <!-- A beautiful floating card mockup -->
+                    
                     <div class="floating-promo-card">
                         <span class="card-sale-badge">30% OFF</span>
                         <div class="promo-card-details">
@@ -84,7 +82,7 @@
                 </div>
             </div>
 
-            <!-- Categories Quick Filter Bar -->
+            
             <div class="categories-bar">
                 <button class="cat-pill active" data-category="all">Todos</button>
                 <button class="cat-pill" data-category="Vestidos">Vestidos</button>
@@ -94,7 +92,7 @@
                 <button class="cat-pill" data-category="Accesorios">Accesorios</button>
             </div>
 
-            <!-- Shop Catalog Area (Grid & Filters) -->
+            
             <div class="catalog-container">
                 <!-- Sidebar Filters (Collapsible on Mobile) -->
                 <aside class="filters-sidebar">
@@ -132,19 +130,19 @@
                     </div>
                 </aside>
 
-                <!-- Products Grid -->
+                
                 <div class="products-area">
                     <div class="results-header">
                         <span class="results-count" id="results-count">Mostrando 8 productos</span>
                     </div>
                     <div class="products-grid" id="products-grid">
-                        <!-- Product Cards rendered dynamically via JS -->
+                    
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ADMINISTRADOR (ADMIN) VIEW -->
+        
         <section id="admin-view" class="view-section hidden">
             <div class="admin-header">
                 <div>
@@ -158,16 +156,16 @@
                 </div>
             </div>
 
-            <!-- Admin Sub-tabs -->
+            
             <div class="admin-tabs">
                 <button class="admin-tab-btn active" data-tab="stats-tab"><i class="fa-solid fa-chart-simple"></i> Estadísticas de Ventas</button>
                 <button class="admin-tab-btn" data-tab="inventory-tab"><i class="fa-solid fa-boxes-stacked"></i> Inventario de Productos</button>
                 <button class="admin-tab-btn" data-tab="orders-tab"><i class="fa-solid fa-receipt"></i> Pedidos Recibidos</button>
             </div>
 
-            <!-- Tab 1: Stats & Charts -->
+            
             <div id="stats-tab" class="admin-tab-content active">
-                <!-- KPI Grid -->
+            
                 <div class="kpi-grid">
                     <div class="kpi-card">
                         <div class="kpi-icon icon-rose"><i class="fa-solid fa-sack-dollar"></i></div>
@@ -199,7 +197,7 @@
                     </div>
                 </div>
 
-                <!-- Graphic & Analysis Row -->
+                
                 <div class="dashboard-row">
                     <div class="dashboard-card main-chart-card">
                         <div class="card-header">
@@ -207,7 +205,7 @@
                             <span class="card-timeframe">Últimos 5 días</span>
                         </div>
                         <div class="chart-container" id="sales-chart-container">
-                            <!-- High quality CSS/SVG Chart rendered by JS -->
+                            
                         </div>
                     </div>
                     <div class="dashboard-card popular-products-card">
@@ -215,13 +213,13 @@
                             <h3>Productos Más Vendidos</h3>
                         </div>
                         <ul class="popular-list" id="popular-products-list">
-                            <!-- Rendered dynamically -->
+                            
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Tab 2: Inventory CRUD -->
+            
             <div id="inventory-tab" class="admin-tab-content hidden">
                 <div class="table-controls">
                     <div class="search-bar inventory-search">
@@ -253,13 +251,13 @@
                             </tr>
                         </thead>
                         <tbody id="inventory-table-body">
-                            <!-- Dynamic rows via JS -->
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Tab 3: Orders Recieved -->
+            
             <div id="orders-tab" class="admin-tab-content hidden">
                 <div class="table-responsive">
                     <table class="admin-table">
@@ -275,22 +273,22 @@
                             </tr>
                         </thead>
                         <tbody id="orders-table-body">
-                            <!-- Dynamic rows via JS -->
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
-        <!-- MI CUENTA / CLIENT PROFILE VIEW -->
+        
         <section id="profile-view" class="view-section hidden">
             <div class="profile-container">
-                <!-- Left panel: User info -->
+                
                 <div class="profile-sidebar-card">
                     <div class="user-avatar-large">
                         <i class="fa-solid fa-user-tie" id="user-avatar-icon"></i>
                     </div>
-                    <h3 id="profile-name">Sofia Rodriguez</h3>
+                    <h3 id="profile-name">cliente</h3>
                     <p class="profile-email" id="profile-email">cliente@chic.com</p>
                     <span class="user-badge" id="profile-role-badge">Cliente Premium</span>
                     
@@ -301,7 +299,7 @@
                     </button>
                 </div>
 
-                <!-- Right panel: Purchase History -->
+                
                 <div class="profile-main-content">
                     <h2 class="section-title">Historial de Mis Compras</h2>
                     <p class="section-subtitle">Realiza el seguimiento de tus pedidos y consulta tus compras anteriores.</p>
@@ -315,7 +313,7 @@
 
     </main>
 
-    <!-- RIGHT SLIDE-OUT CART SIDEBAR -->
+
     <div class="cart-backdrop" id="cart-backdrop"></div>
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-sidebar-header">
@@ -323,12 +321,12 @@
             <button class="close-cart-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
-        <!-- Cart Items Container -->
+        
         <div class="cart-items" id="cart-items-container">
-            <!-- Items rendered dynamically -->
+            
         </div>
 
-        <!-- Cart Footer -->
+        
         <div class="cart-sidebar-footer">
             <div class="cart-totals">
                 <span>Subtotal:</span>
@@ -341,16 +339,16 @@
         </div>
     </div>
 
-    <!-- MODAL: PRODUCT DETAIL -->
+    
     <div class="modal-overlay" id="product-detail-modal">
         <div class="modal-container product-modal-container">
             <button class="modal-close-btn" id="close-detail-modal-btn"><i class="fa-solid fa-xmark"></i></button>
             <div class="product-modal-grid">
-                <!-- Product Image Gallery -->
+                
                 <div class="product-modal-gallery">
                     <img src="" id="modal-product-img" alt="Product Name">
                 </div>
-                <!-- Product Purchase controls -->
+                
                 <div class="product-modal-info">
                     <span class="modal-product-cat" id="modal-product-cat">Categoría</span>
                     <h2 class="modal-product-title" id="modal-product-title">Nombre del Producto</h2>
@@ -360,7 +358,7 @@
                     </div>
                     <p class="modal-product-desc" id="modal-product-desc">Descripción detallada del producto.</p>
                     
-                    <!-- Size Selector -->
+                    
                     <div class="selector-group">
                         <label>Selecciona tu Talla:</label>
                         <div class="size-options">
@@ -371,7 +369,7 @@
                         </div>
                     </div>
 
-                    <!-- Color Selector -->
+                    
                     <div class="selector-group">
                         <label>Color Disponible:</label>
                         <div class="color-options">
@@ -381,7 +379,7 @@
                         </div>
                     </div>
 
-                    <!-- Quantity -->
+                    
                     <div class="selector-group quantity-row">
                         <label>Cantidad:</label>
                         <div class="quantity-controller">
@@ -391,7 +389,7 @@
                         </div>
                     </div>
 
-                    <!-- Add to bag button -->
+                    
                     <div class="actions-row">
                         <button class="btn btn-pink btn-lg btn-block" id="modal-add-to-cart-btn">
                             <i class="fa-solid fa-bag-shopping"></i> Añadir a la Bolsa
@@ -403,7 +401,7 @@
         </div>
     </div>
 
-    <!-- MODAL: LOGIN / REGISTER (GLASSMORPHISM) -->
+    
     <div class="modal-overlay" id="auth-modal">
         <div class="modal-container auth-modal-container glass-card">
             <button class="modal-close-btn" id="close-auth-modal-btn"><i class="fa-solid fa-xmark"></i></button>
@@ -413,7 +411,7 @@
                 <button class="auth-tab-btn" id="tab-register-btn">Registrarse</button>
             </div>
 
-            <!-- Login Form -->
+            
             <form id="login-form" class="auth-form active">
                 <div class="auth-header-desc">
                     <h3>¡Qué bueno verte de nuevo!</h3>
@@ -447,7 +445,7 @@
                 </div>
             </form>
 
-            <!-- Register Form -->
+            
             <form id="register-form" class="auth-form">
                 <div class="auth-header-desc">
                     <h3>Únete a Chic Rose</h3>
@@ -485,7 +483,7 @@
         </div>
     </div>
 
-    <!-- MODAL: ADMIN PRODUCT ADD / EDIT EDITOR -->
+    
     <div class="modal-overlay" id="product-editor-modal">
         <div class="modal-container editor-modal-container">
             <button class="modal-close-btn" id="close-editor-modal-btn"><i class="fa-solid fa-xmark"></i></button>
@@ -550,7 +548,7 @@
         </div>
     </div>
 
-    <!-- MODAL: CHECKOUT AND PAYMENT -->
+    
     <div class="modal-overlay" id="checkout-modal">
         <div class="modal-container checkout-modal-container glass-card">
             <button class="modal-close-btn" id="close-checkout-modal-btn"><i class="fa-solid fa-xmark"></i></button>
@@ -558,7 +556,7 @@
             <p class="checkout-subtitle">Por favor ingresa tus datos de envío y pago para completar la orden en Chic Rose.</p>
             
             <div class="checkout-grid">
-                <!-- Checkout Form -->
+                
                 <form id="checkout-form" class="checkout-form">
                     <div class="checkout-section-title"><i class="fa-solid fa-truck"></i> 1. Información de Envío</div>
                     
@@ -595,7 +593,7 @@
                         </button>
                     </div>
 
-                    <!-- SUB-FORM 1: TARJETA -->
+                
                     <div id="payment-form-card" class="payment-method-fields active">
                         <div class="form-group">
                             <label for="payment-cardname">Nombre del Titular de la Tarjeta</label>
@@ -622,7 +620,7 @@
                         </div>
                     </div>
 
-                    <!-- SUB-FORM 2: MERCADO PAGO -->
+                    
                     <div id="payment-form-mercadopago" class="payment-method-fields">
                         <div class="mp-mock-container">
                             <div class="mp-mock-header">
@@ -642,7 +640,7 @@
                         </div>
                     </div>
 
-                    <!-- SUB-FORM 3: EFECTIVO -->
+                    
                     <div id="payment-form-cash" class="payment-method-fields">
                         <div class="cash-mock-container">
                             <div class="cash-icon-banner">
@@ -662,12 +660,12 @@
                     </button>
                 </form>
 
-                <!-- Order Summary Sidebar inside checkout -->
+                
                 <div class="checkout-summary-panel">
                     <h3>Resumen del Pedido</h3>
                     <hr>
                     <div class="checkout-summary-items" id="checkout-summary-items">
-                        <!-- Loaded dynamically -->
+                    
                     </div>
                     <hr>
                     <div class="checkout-summary-row">
@@ -693,7 +691,7 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col brand-col">
@@ -740,7 +738,7 @@
         </div>
     </footer>
 
-    <!-- MODAL: SIMULACION DE PAGO FICTICIO -->
+    
     <div class="modal-overlay" id="payment-simulation-modal" style="z-index: 10000;">
         <div class="modal-container auth-modal-container glass-card" style="max-width: 480px; text-align: center; padding: 40px 30px;">
             <div id="payment-sim-processing">
@@ -784,7 +782,7 @@
         </div>
     </div>
 
-    <!-- Core Javascript Code -->
+    
     <script src="app.js"></script>
 <a href="http://localhost:5555" target="_blank" class="btn btn-outline-pink btn-sm" style="position:fixed;bottom:20px;right:20px;z-index:1000;">Ver DB (Prisma Studio)</a>
 </body>
